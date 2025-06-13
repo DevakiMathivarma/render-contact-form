@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            padding: 40px;
+        }
+        form {
+            max-width: 500px;
+            margin: auto;
+        }
+        label, input, textarea {
+            display: block;
+            width: 100%;
+            margin-bottom: 15px;
+           
+        }
+        input{
+            padding:10px;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2 style="text-align: center;">Contact Us</h2>
+    <form method="POST">
+        {{ form.hidden_tag() }}
+
+        {{ form.name.label }}  
+        {{ form.name(size=32) }}
+        {% if form.name.errors %}
+            <div class="error">{{ form.name.errors[0] }}</div>
+        {% endif %}
+
+        {{ form.email.label }}  
+        {{ form.email(size=32) }}
+        {% if form.email.errors %}
+            <div class="error">{{ form.email.errors[0] }}</div>
+        {% endif %}
+
+        {{ form.message.label }}  
+        {{ form.message(rows=5) }}
+        {% if form.message.errors %}
+            <div class="error">{{ form.message.errors[0] }}</div>
+        {% endif %}
+
+        {{ form.submit() }}
+    </form>
+</body>
+</html>
